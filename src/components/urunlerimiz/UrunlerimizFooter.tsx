@@ -2,6 +2,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React from "react";
 import { Button, Flex, Image, Link, Text } from "rebass/styled-components";
+import { navLinks } from "./UrunlerimizHeader";
 
 function UrunlerimizFooter() {
   const isMobile = useIsMobile();
@@ -18,20 +19,13 @@ function UrunlerimizFooter() {
     <Flex mt={5} width={1} backgroundColor="#fff">
       <Flex width={1} mx="20px" py={3} flexDirection="column">
         <Flex flexDirection="column" width={1} alignItems="start">
-          <Flex flexDirection="column" sx={{ gap: 3, opacity: 0.7 }}>
-            <Link color="#212A34">Nasıl Çalışır ?</Link>
-            <Link color="#212A34">Fiyatlandırma</Link>
-            <Link color="#212A34">İşletmeniz İçin Başvurun</Link>
-          </Flex>
+          <SiteLinks />
           <Flex
             alignItems="start"
             flexDirection="column"
             mt={4}
             sx={{ gap: 3 }}
           >
-            <Flex>
-              <Image width="75px" src="/images/qrwebsiyah.png" />
-            </Flex>
             <Flex sx={{ gap: 3 }}>
               <Button
                 backgroundColor="#E67E22"
@@ -41,7 +35,10 @@ function UrunlerimizFooter() {
                   padding: "10px 20px",
                 }}
               >
-                <Link href="https://sayracafe.thevertexcreative.com/menu?company=sayracafe">
+                <Link
+                  target="_blank"
+                  href="https://sayracafe.thevertexcreative.com/menu?company=sayracafe"
+                >
                   Demoyu İncele
                 </Link>
               </Button>
@@ -106,9 +103,6 @@ function UrunlerimizFooter() {
       <Flex mt={4} width={1} mx="100px" flexDirection="column">
         <Flex width={1} justifyContent="space-between" alignItems="center">
           <Flex flexDirection="column" sx={{ gap: 4 }}>
-            <Flex>
-              <Image width="75px" src="/images/qrwebsiyah.png" />
-            </Flex>
             <Flex sx={{ gap: 3 }}>
               <Button
                 backgroundColor="#E67E22"
@@ -155,11 +149,7 @@ function UrunlerimizFooter() {
               </Link>
             </Flex>
           </Flex>
-          <Flex flexDirection="column" sx={{ gap: 3, opacity: 0.7 }}>
-            <Link color="#212A34">Nasıl Çalışır ?</Link>
-            <Link color="#212A34">Fiyatlandırma</Link>
-            <Link color="#212A34">İşletmeniz İçin Başvurun</Link>
-          </Flex>
+          <SiteLinks />
         </Flex>
         <Flex
           width={1}
@@ -190,3 +180,13 @@ function UrunlerimizFooter() {
 }
 
 export default UrunlerimizFooter;
+
+const SiteLinks = () => (
+  <Flex flexDirection="column" sx={{ gap: 3, opacity: 0.7 }}>
+    {navLinks.map((navLink) => (
+      <Link key={navLink.id} href={navLink.href} color="#212A34">
+        {navLink.title}
+      </Link>
+    ))}
+  </Flex>
+);

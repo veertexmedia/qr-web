@@ -67,9 +67,7 @@ const VqrPage = () => {
             height={isMobile ? "50px" : "42px"}
             sx={{ borderRadius: "10px" }}
           >
-            <Link href="http://localhost:3000/urunlerimiz/vqr/basvuru">
-              Hemen Başla
-            </Link>
+            <Link href="/basvuru">Hemen Başla</Link>
           </Button>
         </Flex>
       </Flex>
@@ -172,7 +170,10 @@ const VqrPage = () => {
               sx={{ gap: "5px" }}
             >
               <Text color="#e67e22" fontSize="20px" fontWeight="900">
-                <Link href="https://sayracafe.thevertexcreative.com/menu?company=sayracafe">
+                <Link
+                  target="_blank"
+                  href="https://sayracafe.thevertexcreative.com/menu?company=sayracafe"
+                >
                   Demoyu İncele
                 </Link>
               </Text>

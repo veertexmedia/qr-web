@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Button, Flex, Image, Link, Text } from "rebass/styled-components";
 
-const navLinks = [
+export const navLinks = [
   {
     id: 1,
     title: "Nasıl Çalışır?",
@@ -89,18 +89,11 @@ function UrunlerimizHeader({
       >
         <Image
           src={imageSrc}
-          width="100px"
+          width="80px"
           onClick={() => router.push("/")}
           sx={{ cursor: "pointer" }}
         />
-        <Button
-          backgroundColor="#E67E22"
-          sx={{ borderRadius: "10px", height: "42px" }}
-        >
-          <Link href="https://sayracafe.thevertexcreative.com/admin">
-            Yönetim Paneli
-          </Link>
-        </Button>
+
         <Icon
           width="50px"
           height="50px"
@@ -131,6 +124,7 @@ function UrunlerimizHeader({
       >
         {navLinks.map((navLink) => (
           <Link
+            target={navLink.href.startsWith("https") ? "_blank" : ""}
             key={navLink.id}
             href={navLink.href}
             sx={{
@@ -146,6 +140,17 @@ function UrunlerimizHeader({
             {navLink.title}
           </Link>
         ))}
+        <Button
+          backgroundColor="#E67E22"
+          sx={{ borderRadius: "10px", height: "42px" }}
+        >
+          <Link
+            target="_blank"
+            href="https://sayracafe.thevertexcreative.com/admin"
+          >
+            Yönetim Paneli
+          </Link>
+        </Button>
       </Flex>
     </Flex>
   ) : (
@@ -165,7 +170,7 @@ function UrunlerimizHeader({
     >
       <Image
         src={imageSrc}
-        width="100px"
+        width="80px"
         onClick={() => router.push("/")}
         sx={{ cursor: "pointer" }}
       />
